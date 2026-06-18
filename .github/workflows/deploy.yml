@@ -33,7 +33,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script: docker stop myapp && docker pull addyjaime/app:latest && docker run -d -p 3000:3080  --name myapp addyjaime/app:latest
+          script: docker stop myapp || true && docker rm myapp || true && docker pull addyjaime/app:latest && docker run -d -p 3000:3080 --name myapp addyjaime/app:latest
           
           
           
